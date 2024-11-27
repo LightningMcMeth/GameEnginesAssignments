@@ -1,0 +1,39 @@
+# Ignore Visual Studio specific files
+.vs/
+*.code-workspace
+*.suo
+*.VC.db
+*.VC.opendb
+
+# Windows image file caches
+Thumbs.db
+thumbs.db
+
+# Build folders and artifacts
+**/x64/
+**/Debug/
+**/Release/
+**/ipch/
+
+# Build artifacts and intermediate files
+*.obj
+*.exe
+*.ilk
+*.idb
+*.pdb
+*.tlog
+*.lastbuildstate
+*.log
+*.recipe
+
+# Ignore generated project files
+*.user
+*.filters
+*.FileListAbsolute.txt
+*.vcxproj*
+
+# Backup and temporary files
+*.tmp
+*.bak
+*.ncb
+*.sdf

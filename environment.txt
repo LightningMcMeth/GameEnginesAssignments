@@ -1,0 +1,7 @@
+- Visual Studio Community 2022 ver. 17.12.2
+- ISO C++20 Standard
+- MSVC ver. 14.3
+- raylib ver. 5.02
+- directXmath ver. 2024-10-15
+- vcpkg ver.  2024-10-18-e392d7347fe72dff56e7857f7571c22301237ae6
+- Git ver. 2.40.0.windows.1
