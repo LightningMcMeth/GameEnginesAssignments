@@ -30,7 +30,6 @@ thumbs.db
 *.user
 *.filters
 *.FileListAbsolute.txt
-*.vcxproj*
 
 # Backup and temporary files
 *.tmp

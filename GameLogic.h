@@ -8,6 +8,7 @@ private:
     const int screenHeight = 600;
     int targetFPS = 60;
     float dt = 0.0f;
+    bool isPaused = false;
     Player player;
 
     void readInput();

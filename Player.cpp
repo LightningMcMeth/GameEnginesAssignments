@@ -17,13 +17,21 @@ void Player::handleInput(float dt) {
 
     position.x += direction.x * speed * dt;
     position.y += direction.y * speed * dt;
-}
 
+    if (IsKeyDown(KEY_E)) {
+        rotation += 100.0f * dt;
+    }
+    if (IsKeyDown(KEY_Q)) {
+        rotation -= 100.0f * dt;
+    }
+}
 
 void Player::update(float dt) {
 
 }
 
 void Player::draw() const {
-    DrawRectangleV(position, { static_cast<float>(size), static_cast<float>(size) }, BLUE);
+    Rectangle rect = { position.x, position.y, static_cast<float>(size), static_cast<float>(size) };
+    Vector2 origin = { static_cast<float>(size) / 2, static_cast<float>(size) / 2 };
+    DrawRectanglePro(rect, origin, rotation, BLUE);
 }
