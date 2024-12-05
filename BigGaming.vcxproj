@@ -128,12 +128,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssetLoader.cpp" />
+    <ClCompile Include="AssetSetter.cpp" />
     <ClCompile Include="BigGaming.cpp" />
     <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="GameSaver.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetLoader.h" />
+    <ClInclude Include="AssetSetter.h" />
     <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GameSaver.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -10,6 +10,14 @@ void GameLogic::readInput() {
         isPaused = !isPaused;
     }
 
+    if (IsKeyPressed(KEY_ONE)) {
+        gameSaver.saveGameState(player);
+    }
+
+    if (IsKeyPressed(KEY_TWO)) {
+        gameSaver.loadGameState(player);
+    }
+
     if (!isPaused) {
         player.handleInput(dt);
     }
@@ -19,11 +27,17 @@ void GameLogic::update() {
     if (!isPaused) {
         player.update(dt);
 
-        if (player.getPosition().x < 0) player.setPositionX(0);
-        if (player.getPosition().x + player.getSize() > screenWidth) player.setPositionX(screenWidth - player.getSize());
-        if (player.getPosition().y < 0) player.setPositionY(0);
-        if (player.getPosition().y + player.getSize() > screenHeight) player.setPositionY(screenHeight - player.getSize());
+        checkPlayerCollisionWithBorder();
     }
+}
+
+void GameLogic::checkPlayerCollisionWithBorder() {
+
+    float halfPlayerSize = player.getSize() / 2.0f;
+    if (player.getPosition().x - halfPlayerSize < 0) player.setPositionX(halfPlayerSize);
+    if (player.getPosition().x + halfPlayerSize > screenWidth) player.setPositionX(screenWidth - halfPlayerSize);
+    if (player.getPosition().y - halfPlayerSize < 0) player.setPositionY(halfPlayerSize);
+    if (player.getPosition().y + halfPlayerSize > screenHeight) player.setPositionY(screenHeight - halfPlayerSize);
 }
 
 void GameLogic::render() {
@@ -41,8 +55,7 @@ void GameLogic::render() {
 }
 
 void GameLogic::run() {
-    InitWindow(screenWidth, screenHeight, "Big Gaming");
-    SetTargetFPS(targetFPS);
+    initialize();
 
     while (!WindowShouldClose()) {
         dt = GetFrameTime();
@@ -53,4 +66,11 @@ void GameLogic::run() {
     }
 
     CloseWindow();
+}
+
+void GameLogic::initialize() {
+    InitWindow(screenWidth, screenHeight, "Big Gaming");
+    SetTargetFPS(targetFPS);
+
+    assetSetter.loadAndSetPlayerTexture(player, assetLoader);
 }

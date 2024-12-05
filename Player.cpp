@@ -3,6 +3,12 @@
 
 Player::Player() : position{ 400, 300 }, speed{ 200.0f } {}
 
+Player::~Player() {
+    if (playerTexture.id != 0) {
+        UnloadTexture(playerTexture);
+    }
+}
+
 void Player::handleInput(float dt) {
     Vector2 direction = { 0.0f, 0.0f };
 
@@ -31,7 +37,19 @@ void Player::update(float dt) {
 }
 
 void Player::draw() const {
-    Rectangle rect = { position.x, position.y, static_cast<float>(size), static_cast<float>(size) };
-    Vector2 origin = { static_cast<float>(size) / 2, static_cast<float>(size) / 2 };
-    DrawRectanglePro(rect, origin, rotation, BLUE);
+    if (playerTexture.id != 0) {
+        Rectangle sourceRect = { 0, 0, static_cast<float>(playerTexture.width), static_cast<float>(playerTexture.height) };
+        Rectangle destRect = { position.x, position.y, static_cast<float>(size), static_cast<float>(size) };
+        Vector2 origin = { static_cast<float>(size) / 2, static_cast<float>(size) / 2 };
+        DrawTexturePro(playerTexture, sourceRect, destRect, origin, rotation, WHITE);
+    }
+    else {
+        Rectangle rect = { position.x, position.y, static_cast<float>(size), static_cast<float>(size) };
+        Vector2 origin = { static_cast<float>(size) / 2, static_cast<float>(size) / 2 };
+        DrawRectanglePro(rect, origin, rotation, BLUE);
+    }
+}
+
+void Player::setTexture(Texture2D newTexture) {
+    playerTexture = newTexture;
 }
